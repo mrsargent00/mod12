@@ -18,8 +18,7 @@ Read more about MIT here:
 
 ## Description
 
-This application is a homework assignment for the MSU Coding Bootcamp. In this challange we were tasked to create an Employee tracker.
-"Having issues tracking your employees? Losing them constantly, even misplacing them, well.. look no further than the Employee tracker. Keep all your employees in one place to keep them little buggers out of trouble."
+This application is a homework assignment for the MSU Coding Bootcamp. In this challange we were tasked to create an Employee tracker. "Having issues tracking your employees? Losing them constantly, even misplacing them, well.. look no further than the Employee tracker. Keep all your employees in one place to keep them little buggers out of trouble."
 
 ## Video Link
 
@@ -36,6 +35,6 @@ To use, first download the above required applications in [Installation](#instal
 
 
 ## Contributors:
-- Homework code  instruction: https://git.bootcampcontent.com/Michigan-State-University/MSU-VIRT-FSF-PT-07-2023-U-LOLC
+- Homework code instruction: https://git.bootcampcontent.com/Michigan-State-University/MSU-VIRT-FSF-PT-07-2023-U-LOLC
 - [Ben Rodriguez](https://github.com/benrodriguezmoran)
 - [Micah Dershem](https://github.com/G303K)
