@@ -1,4 +1,5 @@
 # Employee Tracker
+
 ## Badges
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -35,6 +36,7 @@ To use, first download the above required applications in [Installation](#instal
 
 
 ## Contributors:
+
 - Homework code instruction: https://git.bootcampcontent.com/Michigan-State-University/MSU-VIRT-FSF-PT-07-2023-U-LOLC
 - [Ben Rodriguez](https://github.com/benrodriguezmoran)
 - [Micah Dershem](https://github.com/G303K)
