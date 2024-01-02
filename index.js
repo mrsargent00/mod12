@@ -2,7 +2,6 @@ const mysql = require("mysql2");
 const inquirer = require("inquirer");
 
 const PORT = process.env.PORT||3006;
-const app = express();
 
 const db = mysql.createConnection({
   host: "DESKTOP-OAB4UJN",
@@ -45,34 +44,28 @@ const options = [
   "Quit",
 ];
 
+// Main menu function
 function mainMenu() {
-  inquirer.prompt([
-    {
-      name: "choice",
-      type: "list",
-      message: "What do you want to do:",
-      choices: options,
-    },
-  ]).then((answers) => {
-    switch (answers.choice) {
-      case "Display Departments":
-        display("SELECT department.id 'ID', department.department 'Department' FROM department;");
-        break;
-      // Add other cases and their respective functions here
-      default:
-        console.log("Goodbye");
-        db.end();
-    }
-  });
+  inquirer
+    .prompt([
+      {
+        name: "choice",
+        type: "list",
+        message: "What do you want to do:",
+        choices: menuOptions,
+      },
+    ])
+    .then((answers) => {
+      switch (answers.choice) {
+        case "Display Departments":
+          display(
+            "SELECT department.id 'ID', department.department 'Department' FROM department;"
+          );
+          break;
+        // Add other cases and their respective functions here
+        default:
+          console.log("Goodbye");
+          db.end();
+      }
+    });
 }
-
-// Add other functions with comments here
-
-// Default response for any other request (Not Found)
-app.use((req, res) => {
-  res.status(404).end();
-});
-
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
