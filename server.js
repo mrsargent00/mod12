@@ -1,13 +1,20 @@
 const inquirer = require("inquirer");
 const mysql = require("mysql2");
 
+const PORT = process.env.PORT||3006;
+const app = express();
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+
+
 const db = mysql.createConnection({
-  host: "localhost",
+  host: "DESKTOP-OAB4UJN",
   user: "root",
-  password: "2515",
+  password: "15962378",
   database: "company",
 });
 
+// Connect to the database
 db.connect((err) => {
   if (err) {
     console.error("Error connecting to the database: " + err.stack);
@@ -17,6 +24,7 @@ db.connect((err) => {
   start();
 });
 
+// Command-line interface for the application
 const start = () => {
   inquirer
     .prompt({
@@ -37,6 +45,7 @@ const start = () => {
     .then(handleUserChoice);
 };
 
+// Handler for user choices
 const handleUserChoice = (data) => {
   switch (data.action) {
     case "View all departments":
@@ -62,20 +71,24 @@ const handleUserChoice = (data) => {
       break;
     default:
       console.log("See you soon!");
-      db.end();
+      db.end(); // Close the database connection
       process.exit();
   }
 };
 
+// View data from a table
 const viewData = (table) => {
   db.query(`SELECT * FROM ${table};`, (err, res) => {
-    if (err) console.error(err);
+    if (err) {
+      console.error(err);
+    }
     console.log("\n");
     console.table(res);
     start();
   });
 };
 
+// View roles and their departments
 const viewRoles = () => {
   const query = `
     SELECT role.id, title, department.name AS department, salary
@@ -84,13 +97,16 @@ const viewRoles = () => {
   `;
 
   db.query(query, (err, res) => {
-    if (err) console.error(err);
+    if (err) {
+      console.error(err);
+    }
     console.log("\n");
     console.table(res);
     start();
   });
 };
 
+// View employees and their details
 const viewEmployees = () => {
   const query = `
     SELECT T1.id, T1.first_name, T1.last_name, role.title, department.name AS department, role.salary, CONCAT(T2.first_name, " ", T2.last_name) AS manager
@@ -101,13 +117,16 @@ const viewEmployees = () => {
   `;
 
   db.query(query, (err, res) => {
-    if (err) console.error(err);
+    if (err) {
+      console.error(err);
+    }
     console.log("\n");
     console.table(res);
     start();
   });
 };
 
+// Add data to a table
 const addData = (table, columnName) => {
   inquirer
     .prompt({
@@ -119,23 +138,38 @@ const addData = (table, columnName) => {
       const query = `INSERT INTO ${table} (${columnName}) VALUES (?)`;
 
       db.query(query, answer.data, (err, res) => {
-        if (err) console.error(err);
+        if (err) {
+          console.error(err);
+        }
         console.log("\nAdded to the database");
         start();
       });
     });
 };
 
+// Add a role with department
 const addRole = () => {
   // Implement adding a role
 };
 
+// Add an employee
 const addEmployee = () => {
   // Implement adding an employee
 };
 
+// Update an employee's role
 const updateEmployeeRole = () => {
   // Implement updating an employee's role
 };
 
+// Start the application
 start();
+
+// Default response for any other request (Not Found)
+app.use((req, res) => {
+  res.status(404).end();
+});
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});

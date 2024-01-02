@@ -1,12 +1,16 @@
 const mysql = require("mysql2");
 const inquirer = require("inquirer");
 
+const PORT = process.env.PORT||3006;
+const app = express();
+
 const db = mysql.createConnection({
-  host: "localhost",
+  host: "DESKTOP-OAB4UJN",
   user: "root",
-  password: "2515",
+  password: "15962378",
   database: "employees_db",
 });
+
 
 db.connect((err) => {
   if (err) {
@@ -29,7 +33,7 @@ function display(query) {
   });
 }
 
-const menuOptions = [
+const options = [
   "Display Departments",
   "Display Roles",
   "Display Employees",
@@ -47,7 +51,7 @@ function mainMenu() {
       name: "choice",
       type: "list",
       message: "What do you want to do:",
-      choices: menuOptions,
+      choices: options,
     },
   ]).then((answers) => {
     switch (answers.choice) {
@@ -62,4 +66,13 @@ function mainMenu() {
   });
 }
 
-// Can add other functions with comments here
+// Add other functions with comments here
+
+// Default response for any other request (Not Found)
+app.use((req, res) => {
+  res.status(404).end();
+});
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
