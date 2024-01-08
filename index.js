@@ -4,9 +4,9 @@ const inquirer = require("inquirer");
 const PORT = process.env.PORT||3006;
 
 const db = mysql.createConnection({
-  host: "DESKTOP-OAB4UJN",
+  host: "localhost",
   user: "root",
-  password: "15962378",
+  password: "",
   database: "employees_db",
 });
 
