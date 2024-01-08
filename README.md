@@ -37,10 +37,10 @@ To use, first download the above required applications in [Installation](#instal
 
 ## Contributors:
 
-- Homework code instruction: https://git.bootcampcontent.com/Michigan-State-University/MSU-VIRT-FSF-PT-07-2023-U-LOLC
 - [Ben Rodriguez](https://github.com/benrodriguezmoran)
 - [Micah Dershem](https://github.com/G303K)
 
 ## Homework Help:
 - https://www.npmjs.com/package/inquirer/v/8.2.4
 - https://www.npmjs.com/package/mysql2
+- Homework code instruction: https://git.bootcampcontent.com/Michigan-State-University/MSU-VIRT-FSF-PT-07-2023-U-LOLC
